@@ -1,4 +1,4 @@
-function [pointsAbove,pointsBelow, points,pointsAboveTest,pointsBelowTest,pointsTest,y] = generateData(amountOfPointsAbove,amountOfPointsBelow,baseRatios)
+function [pointsAbove,pointsBelow, pointsLearn,pointsAboveTest,pointsBelowTest,pointsTest,y] = generateData(amountOfPointsAbove,amountOfPointsBelow,baseRatios)
     dimensionsAmount=length(baseRatios)-1;
 
     pointsAbove =zeros(amountOfPointsAbove,dimensionsAmount);
@@ -31,9 +31,9 @@ function [pointsAbove,pointsBelow, points,pointsAboveTest,pointsBelowTest,points
         pointsBelowTest(k,:)=[points',z];
     end
 
+    pointsLearn=[pointsAbove; pointsBelow];
     pointsTest=[pointsAboveTest; pointsBelowTest];
 
-    points=[pointsAbove; pointsBelow];
     y=[ones(amountOfPointsAbove,1);-ones(amountOfPointsBelow,1)];
 end
 

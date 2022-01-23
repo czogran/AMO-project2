@@ -1,4 +1,4 @@
-function  drawSurface(chartTitle,functionDuration,ratios,baseRatios,pointsAbove,pointsBelow)
+function  drawSurface(chartTitle,functionDuration,ratios,baseRatios,pointsAbove,pointsBelow, badlyClassified)
     amountOfPointsAbove=length(pointsAbove);
     amountOfPointsBelow=length(pointsBelow);
     amountOfPoints=amountOfPointsAbove+amountOfPointsBelow;
@@ -23,8 +23,13 @@ function  drawSurface(chartTitle,functionDuration,ratios,baseRatios,pointsAbove,
         scatter3(pointsBelow(k,1),pointsBelow(k,2),pointsBelow(k,3),'b')
     hold on
     end
-    title(chartTitle +newline +"LICZBA PUNKTÓW: "+ amountOfPoints+newline+"CZAS[s]: "+functionDuration)
+    title(chartTitle +newline +...
+        "WSPÓŁCZYNNIKI PŁASZCZYZNY: "+strjoin(string(baseRatios), ', ') + newline+...
+        "WYLICZONE WSPÓŁCZYNNIKI PŁASZCZYZNY: "+strjoin(string(ratios), ', ') + newline+...
+        "LICZBA PUNKTÓW: "+ amountOfPoints+newline+...
+        "CZAS[s] LICZENIA PRZEZ SOLVER: "+functionDuration +newline+  ...
+        "ŹLE SKLASYFIKOWANE: "+ badlyClassified)
+    
     legend(["PŁASZCZYZNA ZADANA", "PŁASZCZYZNA WYZNACZONA"])
     hold off
-
 end
